@@ -1,22 +1,21 @@
 body {
 	background-color: #181818;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 }
-html,
-body {
-	height: 100%;
-}
+
 .optionsContainer {
-	width: 100px;
-	margin: 50px;
-	display: flex;
+	
+	display:flex;
 	flex-direction: column;
+	justify-content:center;
 	align-items: center;
 	border-radius: 4px;
 	padding: 30px;
-	width: 200px;
+	margin: 50px;
+	width: 175px;
+	height: 700px;
 	background-color: #202020;
 }
 
@@ -31,4 +30,21 @@ body {
 	font-weight: bold;
 	width: 150px;
 	height: 25px;
+}
+
+.squareContainer {
+	width: 800px;
+	height: 800px;
+	border-radius: 4px;
+	padding: 10px;
+	align-self: center;
+	background-color: #202020;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4,1fr);
+	gap:2px;
+}
+
+.square {
+	background-color: white;
 }
