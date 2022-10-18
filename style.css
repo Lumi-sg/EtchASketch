@@ -1,0 +1,34 @@
+body {
+	background-color: #181818;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+html,
+body {
+	height: 100%;
+}
+.optionsContainer {
+	width: 100px;
+	margin: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 4px;
+	padding: 30px;
+	width: 200px;
+	background-color: #202020;
+}
+
+.button {
+	border: none;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+	font-size: 15px;
+	margin: 4px 2px;
+	cursor: pointer;
+	transition: 100ms;
+	font-weight: bold;
+	width: 150px;
+	height: 25px;
+}
