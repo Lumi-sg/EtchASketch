@@ -6,15 +6,20 @@ let size = sizeElement.value;
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
 const clearGridButton = document.querySelector(".clearGrid");
+
+//ERASER STUFF
 const eraserButton = document.querySelector(".eraser");
 let eraser = false;
+let userColor = color.value;
 
-//ERASER
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
 		eraser = true;
+		const eraserColor = "#3a3a3a";
+		color.value = eraserColor;
 	} else if (eraser === true) {
 		eraser = false;
+		color.value = userColor;
 	}
 	console.log(`Eraser is ${eraser}`);
 });
@@ -45,7 +50,6 @@ function fillcontainer(size) {
 
 //DRAWING EVENT LISTENERS
 window.addEventListener("mousedown", () => (draw = true));
-window.addEventListener("mouse", () => (draw = false));
 window.addEventListener("mouseup", () => (draw = false));
 
 //CLEAR GRID BUTTON
