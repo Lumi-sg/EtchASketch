@@ -79,8 +79,12 @@ function clearGrid() {
 //ADJUST SIZE OF GRID
 
 sizeElement.addEventListener("keyup", () => {
-	size = sizeElement.value;
-	clearGrid();
+	if (sizeElement.value <= 64) {
+		size = sizeElement.value;
+		clearGrid();
+	} else {
+		alert("Please enter a number between 1 and 64.");
+	}
 });
 
 fillContainer(size);
