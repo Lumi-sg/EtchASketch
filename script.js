@@ -15,10 +15,12 @@ let userColor = color.value;
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
 		eraser = true;
+		document.querySelector(".eraser").style.backgroundColor =
+			"rgb(27, 206, 45)";
 	} else if (eraser === true) {
 		eraser = false;
+		document.querySelector(".eraser").style.backgroundColor = "";
 	}
-	console.log(`Eraser is ${eraser}`);
 });
 //ACTIONS
 let draw = false;
