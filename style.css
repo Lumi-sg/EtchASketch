@@ -69,3 +69,7 @@ input[type="number"] {
 	color: white;
 	font-size: 18px;
 }
+
+.size {
+	width: 50px;
+}

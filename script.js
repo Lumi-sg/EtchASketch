@@ -70,10 +70,15 @@ window.addEventListener("mouseup", () => (draw = false));
 clearGridButton.addEventListener("click", clearGrid);
 
 function clearGrid() {
-	squareContainer.innerHTML = "";
-	fillContainer(size);
-	eraser = false;
-	document.querySelector(".eraser").style.backgroundColor = "";
+	window.confirm("Are you sure you want to clear the grid?");
+	if (confirm) {
+		squareContainer.innerHTML = "";
+		fillContainer(size);
+		eraser = false;
+		document.querySelector(".eraser").style.backgroundColor = "";
+	} else {
+		return;
+	}
 }
 
 //ADJUST SIZE OF GRID
