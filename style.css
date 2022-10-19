@@ -48,3 +48,7 @@ body {
 .square {
 	background-color: #3a3a3a;
 }
+
+input {
+	text-align: center;
+}
