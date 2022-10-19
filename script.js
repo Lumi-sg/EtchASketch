@@ -70,8 +70,7 @@ window.addEventListener("mouseup", () => (draw = false));
 clearGridButton.addEventListener("click", clearGrid);
 
 function clearGrid() {
-	window.confirm("Are you sure you want to clear the grid?");
-	if (confirm) {
+	if (window.confirm("Are you sure you want to clear the grid?")) {
 		squareContainer.innerHTML = "";
 		fillContainer(size);
 		eraser = false;
