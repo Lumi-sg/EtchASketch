@@ -85,7 +85,10 @@ function clearGrid() {
 sizeElement.addEventListener("keyup", () => {
 	if (sizeElement.value <= 64) {
 		size = sizeElement.value;
-		clearGrid();
+		squareContainer.innerHTML = "";
+		fillContainer(size);
+		eraser = false;
+		document.querySelector(".eraser").style.backgroundColor = "";
 	} else {
 		alert("Please enter a number between 1 and 64.");
 	}
