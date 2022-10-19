@@ -5,7 +5,7 @@ let size = sizeElement.value;
 
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
-const clearGrid = document.querySelector(".clearGrid");
+const clearGridButton = document.querySelector(".clearGrid");
 
 //ACTIONS
 let draw = false;
@@ -38,9 +38,18 @@ window.addEventListener("mouse", () => (draw = false));
 window.addEventListener("mouseup", () => (draw = false));
 
 //CLEAR GRID BUTTON
-clearGrid.addEventListener("click", () => {
+clearGridButton.addEventListener("click", clearGrid);
+
+function clearGrid() {
 	squareContainer.innerHTML = "";
 	fillcontainer(size);
+}
+
+//ADJUST SIZE OF GRID
+
+sizeElement.addEventListener("change", () => {
+	size = sizeElement.value;
+	clearGrid();
 });
 
 fillcontainer(size);
