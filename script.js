@@ -27,7 +27,7 @@ eraserButton.addEventListener("click", () => {
 let draw = false;
 
 //POPULATE THE GRID
-function fillcontainer(size) {
+function fillContainer(size) {
 	squareContainer.style.setProperty("--size", size);
 	for (let i = 0; i < size * size; i++) {
 		const square = document.createElement("div");
@@ -57,7 +57,7 @@ clearGridButton.addEventListener("click", clearGrid);
 
 function clearGrid() {
 	squareContainer.innerHTML = "";
-	fillcontainer(size);
+	fillContainer(size);
 }
 
 //ADJUST SIZE OF GRID
@@ -67,4 +67,4 @@ sizeElement.addEventListener("keyup", () => {
 	clearGrid();
 });
 
-fillcontainer(size);
+fillContainer(size);
