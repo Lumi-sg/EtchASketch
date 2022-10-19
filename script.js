@@ -15,11 +15,8 @@ let userColor = color.value;
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
 		eraser = true;
-		const eraserColor = "#3a3a3a";
-		color.value = eraserColor;
 	} else if (eraser === true) {
 		eraser = false;
-		color.value = userColor;
 	}
 	console.log(`Eraser is ${eraser}`);
 });
@@ -38,11 +35,19 @@ function fillContainer(size) {
 			if (!draw) {
 				return;
 			}
-			square.style.backgroundColor = color.value;
+			if (eraser) {
+				square.style.backgroundColor = "";
+			} else {
+				square.style.backgroundColor = color.value;
+			}
 		});
 		//SO YOU CAN CLICK TO COLOR AND TO FILL THE CLICKED BOX WITH COLOR WHEN YOU CLICK > DRAG
 		square.addEventListener("mousedown", () => {
-			square.style.backgroundColor = color.value;
+			if (eraser) {
+				square.style.backgroundColor = "";
+			} else {
+				square.style.backgroundColor = color.value;
+			}
 		});
 		squareContainer.appendChild(square);
 	}
