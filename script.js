@@ -6,7 +6,18 @@ let size = sizeElement.value;
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
 const clearGridButton = document.querySelector(".clearGrid");
+const eraserButton = document.querySelector(".eraser");
+let eraser = false;
 
+//ERASER
+eraserButton.addEventListener("click", () => {
+	if (eraser === false) {
+		eraser = true;
+	} else if (eraser === true) {
+		eraser = false;
+	}
+	console.log(`Eraser is ${eraser}`);
+});
 //ACTIONS
 let draw = false;
 
