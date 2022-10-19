@@ -47,7 +47,7 @@ function clearGrid() {
 
 //ADJUST SIZE OF GRID
 
-sizeElement.addEventListener("change", () => {
+sizeElement.addEventListener("keyup", () => {
 	size = sizeElement.value;
 	clearGrid();
 });
