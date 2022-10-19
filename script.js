@@ -65,6 +65,8 @@ clearGridButton.addEventListener("click", clearGrid);
 function clearGrid() {
 	squareContainer.innerHTML = "";
 	fillContainer(size);
+	eraser = false;
+	document.querySelector(".eraser").style.backgroundColor = "";
 }
 
 //ADJUST SIZE OF GRID
