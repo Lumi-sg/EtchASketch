@@ -10,7 +10,6 @@ const clearGridButton = document.querySelector(".clearGrid");
 //ERASER STUFF
 const eraserButton = document.querySelector(".eraser");
 let eraser = false;
-let userColor = color.value;
 
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
@@ -22,6 +21,14 @@ eraserButton.addEventListener("click", () => {
 		document.querySelector(".eraser").style.backgroundColor = "";
 	}
 });
+
+//COLOR GRABBER
+// let grab = false;
+// const colorGrabber = document.querySelector(".grabber");
+// colorGrabber.addEventListener("input", (e) => {
+// 	color.value = e.target.value;
+// });
+
 //ACTIONS
 let draw = false;
 
