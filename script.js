@@ -59,6 +59,9 @@ function fillContainer(size) {
 			if (!draw) {
 				return;
 			}
+			if (grab) {
+				return;
+			}
 			if (eraser) {
 				square.style.backgroundColor = "";
 			} else if (rainbow) {
@@ -69,6 +72,9 @@ function fillContainer(size) {
 		});
 		//SO YOU CAN CLICK TO COLOR AND TO FILL THE CLICKED BOX WITH COLOR WHEN YOU CLICK > DRAG
 		square.addEventListener("mousedown", () => {
+			if (grab) {
+				return;
+			}
 			if (eraser) {
 				square.style.backgroundColor = "";
 			} else if (rainbow) {
