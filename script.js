@@ -138,15 +138,13 @@ function turnRainbowOn() {
 	turnGrabberOff();
 	turnEraserOff();
 	rainbow = true;
-	const rainbowEffectOn = document.querySelector(".rainbow");
-	rainbowEffectOn.classList.add("rainbowButtonAnimation");
+	rainbowButton.classList.add("rainbowButtonAnimation");
 }
 
 function turnRainbowOff() {
 	rainbow = false;
 	document.querySelector(".rainbow").style.color = "";
-	const rainbowEffectOn = document.querySelector(".rainbow");
-	rainbowEffectOn.classList.remove("rainbowButtonAnimation");
+	rainbowButton.classList.remove("rainbowButtonAnimation");
 }
 
 function rainbowBrush(square) {
