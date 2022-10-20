@@ -94,13 +94,8 @@ input[type="number"] {
 	text-shadow: rgb(0, 0, 0) 2.5px 1px 1px;
 	-webkit-text-stroke: 0.3px black;
 }
-.rainbow:after {
-	content: attr(alt);
-	width: 20vw;
-	height: 8vw;
-	background-color: #191919;
-}
-.rainbow:hover {
+
+.rainbow.rainbowButtonAnimation {
 	animation: slidebg 2s linear infinite;
 }
 

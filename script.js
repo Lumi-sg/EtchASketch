@@ -15,7 +15,6 @@ let rainbow = false;
 
 rainbowButton.addEventListener("click", () => {
 	if (rainbow === false) {
-		turnEraserOff();
 		turnRainbowOn();
 	} else if (rainbow === true) {
 		turnRainbowOff();
@@ -27,7 +26,6 @@ let eraser = false;
 
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
-		turnRainbowOff();
 		turnEraserOn();
 	} else if (eraser === true) {
 		turnEraserOff();
@@ -35,11 +33,19 @@ eraserButton.addEventListener("click", () => {
 });
 
 //COLOR GRABBER
-// let grab = false;
-// const colorGrabber = document.querySelector(".grabber");
-// colorGrabber.addEventListener("input", (e) => {
-// 	color.value = e.target.value;
-// });
+const colorGrabber = document.querySelector(".grabber");
+let grab = false;
+
+colorGrabber.addEventListener("click", (e) => {
+	if (grab === false) {
+		turnEraserOff();
+		turnRainbowOff();
+		turnGrabberOn();
+		color.value = e.target.value;
+	} else if (grab === true) {
+		turnGrabberOff();
+	}
+});
 
 //POPULATE THE GRID
 function fillContainer(size) {
@@ -102,6 +108,7 @@ sizeElement.addEventListener("keyup", () => {
 		fillContainer(size);
 		turnEraserOff();
 		turnRainbowOff();
+		turnGrabberOff();
 	} else {
 		alert("Please enter a number between 1 and 64.");
 	}
@@ -110,6 +117,8 @@ sizeElement.addEventListener("keyup", () => {
 //HELPER FUNCTIONS
 
 function turnEraserOn() {
+	turnGrabberOff();
+	turnRainbowOff();
 	eraser = true;
 	document.querySelector(".eraser").style.backgroundColor = "rgb(27, 206, 45)";
 }
@@ -120,13 +129,18 @@ function turnEraserOff() {
 }
 
 function turnRainbowOn() {
+	turnGrabberOff();
+	turnEraserOff();
 	rainbow = true;
-	document.querySelector(".rainbow").style.color = "rgb(0, 255, 21)";
+	const rainbowEffectOn = document.querySelector(".rainbow");
+	rainbowEffectOn.classList.add("rainbowButtonAnimation");
 }
 
 function turnRainbowOff() {
 	rainbow = false;
 	document.querySelector(".rainbow").style.color = "";
+	const rainbowEffectOn = document.querySelector(".rainbow");
+	rainbowEffectOn.classList.remove("rainbowButtonAnimation");
 }
 
 function rainbowBrush(square) {
@@ -134,6 +148,16 @@ function rainbowBrush(square) {
 	const randomGreen = Math.floor(Math.random() * 256);
 	const randomBlue = Math.floor(Math.random() * 256);
 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+}
+
+function turnGrabberOn() {
+	grab = true;
+	document.querySelector(".grabber").style.backgroundColor = "rgb(27, 206, 45)";
+}
+
+function turnGrabberOff() {
+	grab = false;
+	document.querySelector(".grabber").style.backgroundColor = "";
 }
 
 fillContainer(size);
