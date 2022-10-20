@@ -6,19 +6,31 @@ let size = sizeElement.value;
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
 const clearGridButton = document.querySelector(".clearGrid");
+let draw = false;
 
+//RAINBOW
+
+const rainbowButton = document.querySelector(".rainbow");
+let rainbow = false;
+
+rainbowButton.addEventListener("click", () => {
+	if (rainbow === false) {
+		turnEraserOff();
+		turnRainbowOn();
+	} else if (rainbow === true) {
+		turnRainbowOff();
+	}
+});
 //ERASER STUFF
 const eraserButton = document.querySelector(".eraser");
 let eraser = false;
 
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
-		eraser = true;
-		document.querySelector(".eraser").style.backgroundColor =
-			"rgb(27, 206, 45)";
+		turnRainbowOff();
+		turnEraserOn();
 	} else if (eraser === true) {
-		eraser = false;
-		document.querySelector(".eraser").style.backgroundColor = "";
+		turnEraserOff();
 	}
 });
 
@@ -28,9 +40,6 @@ eraserButton.addEventListener("click", () => {
 // colorGrabber.addEventListener("input", (e) => {
 // 	color.value = e.target.value;
 // });
-
-//ACTIONS
-let draw = false;
 
 //POPULATE THE GRID
 function fillContainer(size) {
@@ -73,8 +82,8 @@ function clearGrid() {
 	if (window.confirm("Are you sure you want to clear the grid?")) {
 		squareContainer.innerHTML = "";
 		fillContainer(size);
-		eraser = false;
-		document.querySelector(".eraser").style.backgroundColor = "";
+		turnEraserOff();
+		turnRainbowOff();
 	} else {
 		return;
 	}
@@ -93,5 +102,27 @@ sizeElement.addEventListener("keyup", () => {
 		alert("Please enter a number between 1 and 64.");
 	}
 });
+
+//HELPER FUNCTIONS
+
+function turnEraserOn() {
+	eraser = true;
+	document.querySelector(".eraser").style.backgroundColor = "rgb(27, 206, 45)";
+}
+
+function turnEraserOff() {
+	eraser = false;
+	document.querySelector(".eraser").style.backgroundColor = "";
+}
+
+function turnRainbowOn() {
+	rainbow = true;
+	document.querySelector(".rainbow").style.color = "rgb(0, 255, 21)";
+}
+
+function turnRainbowOff() {
+	rainbow = false;
+	document.querySelector(".rainbow").style.color = "";
+}
 
 fillContainer(size);
