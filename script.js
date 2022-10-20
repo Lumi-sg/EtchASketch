@@ -32,20 +32,20 @@ eraserButton.addEventListener("click", () => {
 	}
 });
 
-//COLOR GRABBER
-const colorGrabber = document.querySelector(".grabber");
-let grab = false;
+// //COLOR GRABBER
+// const colorGrabber = document.querySelector(".grabber");
+// let grab = false;
 
-colorGrabber.addEventListener("click", (e) => {
-	if (grab === false) {
-		turnEraserOff();
-		turnRainbowOff();
-		turnGrabberOn();
-		color.value = e.target.value;
-	} else if (grab === true) {
-		turnGrabberOff();
-	}
-});
+// colorGrabber.addEventListener("click", () => {
+// 	if (grab === false) {
+// 		turnEraserOff();
+// 		turnRainbowOff();
+// 		turnGrabberOn();
+// 		color.value = e.target.value;
+// 	} else if (grab === true) {
+// 		turnGrabberOff();
+// 	}
+// });
 
 //POPULATE THE GRID
 function fillContainer(size) {
@@ -154,14 +154,14 @@ function rainbowBrush(square) {
 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
-function turnGrabberOn() {
-	grab = true;
-	document.querySelector(".grabber").style.backgroundColor = "rgb(27, 206, 45)";
-}
+// function turnGrabberOn() {
+// 	grab = true;
+// 	document.querySelector(".grabber").style.backgroundColor = "rgb(27, 206, 45)";
+// }
 
-function turnGrabberOff() {
-	grab = false;
-	document.querySelector(".grabber").style.backgroundColor = "";
-}
+// function turnGrabberOff() {
+// 	grab = false;
+// 	document.querySelector(".grabber").style.backgroundColor = "";
+// }
 
 fillContainer(size);
