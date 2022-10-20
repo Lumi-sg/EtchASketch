@@ -55,6 +55,8 @@ function fillContainer(size) {
 			}
 			if (eraser) {
 				square.style.backgroundColor = "";
+			} else if (rainbow) {
+				rainbowBrush(square);
 			} else {
 				square.style.backgroundColor = color.value;
 			}
@@ -63,6 +65,8 @@ function fillContainer(size) {
 		square.addEventListener("mousedown", () => {
 			if (eraser) {
 				square.style.backgroundColor = "";
+			} else if (rainbow) {
+				rainbowBrush(square);
 			} else {
 				square.style.backgroundColor = color.value;
 			}
@@ -96,8 +100,8 @@ sizeElement.addEventListener("keyup", () => {
 		size = sizeElement.value;
 		squareContainer.innerHTML = "";
 		fillContainer(size);
-		eraser = false;
-		document.querySelector(".eraser").style.backgroundColor = "";
+		turnEraserOff();
+		turnRainbowOff();
 	} else {
 		alert("Please enter a number between 1 and 64.");
 	}
@@ -123,6 +127,13 @@ function turnRainbowOn() {
 function turnRainbowOff() {
 	rainbow = false;
 	document.querySelector(".rainbow").style.color = "";
+}
+
+function rainbowBrush(square) {
+	const randomRed = Math.floor(Math.random() * 256);
+	const randomGreen = Math.floor(Math.random() * 256);
+	const randomBlue = Math.floor(Math.random() * 256);
+	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
 fillContainer(size);
