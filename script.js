@@ -31,22 +31,6 @@ eraserButton.addEventListener("click", () => {
 		turnEraserOff();
 	}
 });
-
-//COLOR GRABBER
-const colorGrabber = document.querySelector(".grabber");
-let grab = false;
-
-colorGrabber.addEventListener("click", (e) => {
-	if (grab === false) {
-		turnEraserOff();
-		turnRainbowOff();
-		turnGrabberOn();
-		color.value = e.target.value;
-	} else if (grab === true) {
-		turnGrabberOff();
-	}
-});
-
 //POPULATE THE GRID
 function fillContainer(size) {
 	squareContainer.style.setProperty("--size", size);
@@ -59,9 +43,6 @@ function fillContainer(size) {
 			if (!draw) {
 				return;
 			}
-			if (grab) {
-				return;
-			}
 			if (eraser) {
 				square.style.backgroundColor = "";
 			} else if (rainbow) {
@@ -72,9 +53,6 @@ function fillContainer(size) {
 		});
 		//SO YOU CAN CLICK TO COLOR AND TO FILL THE CLICKED BOX WITH COLOR WHEN YOU CLICK > DRAG
 		square.addEventListener("mousedown", () => {
-			if (grab) {
-				return;
-			}
 			if (eraser) {
 				square.style.backgroundColor = "";
 			} else if (rainbow) {
@@ -114,7 +92,6 @@ sizeElement.addEventListener("keyup", () => {
 		fillContainer(size);
 		turnEraserOff();
 		turnRainbowOff();
-		turnGrabberOff();
 	} else {
 		alert("Please enter a number between 1 and 64.");
 	}
@@ -123,7 +100,6 @@ sizeElement.addEventListener("keyup", () => {
 //HELPER FUNCTIONS
 
 function turnEraserOn() {
-	turnGrabberOff();
 	turnRainbowOff();
 	eraser = true;
 	document.querySelector(".eraser").style.backgroundColor = "rgb(27, 206, 45)";
@@ -135,7 +111,6 @@ function turnEraserOff() {
 }
 
 function turnRainbowOn() {
-	turnGrabberOff();
 	turnEraserOff();
 	rainbow = true;
 	rainbowButton.classList.add("rainbowButtonAnimation");
@@ -152,16 +127,6 @@ function rainbowBrush(square) {
 	const randomGreen = Math.floor(Math.random() * 256);
 	const randomBlue = Math.floor(Math.random() * 256);
 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
-}
-
-function turnGrabberOn() {
-	grab = true;
-	document.querySelector(".grabber").style.backgroundColor = "rgb(27, 206, 45)";
-}
-
-function turnGrabberOff() {
-	grab = false;
-	document.querySelector(".grabber").style.backgroundColor = "";
 }
 
 fillContainer(size);
