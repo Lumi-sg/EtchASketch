@@ -63,6 +63,13 @@ function fillContainer(size) {
 				square.style.backgroundColor = color.value;
 			}
 		});
+
+		//BACKGROUND COLOR
+		const paintbucket = document.querySelector(".paintbucket");
+		paintbucket.addEventListener("click", () => {
+			square.style.backgroundColor = color.value;
+		});
+
 		//SO YOU CAN CLICK TO COLOR AND TO FILL THE CLICKED BOX WITH COLOR WHEN YOU CLICK > DRAG
 		square.addEventListener("mousedown", () => {
 			if (eraser) {
