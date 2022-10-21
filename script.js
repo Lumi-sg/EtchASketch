@@ -26,6 +26,12 @@ gridLineButton.addEventListener("click", () => {
 
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
+
+color.addEventListener("click", () => {
+	console.log("you clicked the color button");
+	turnEraserOff();
+	turnRainbowOff();
+});
 let draw = false;
 
 //RAINBOW
