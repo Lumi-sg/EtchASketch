@@ -1,9 +1,18 @@
+const defaultGridSize = 16;
+
 //GRID SIZE
 const squareContainer = document.querySelector(".squareContainer");
-const sizeElement = document.querySelector(".size");
-let size = sizeElement.value;
+
+//NEW SIZE SLIDER
+const sizeValue = document.getElementById("sizeValue");
+
+const sizeSlider = document.getElementById("sizeSlider");
+
+//UPDATE SLIDER ON PAGE
+sizeSlider.onmousemove = (e) => updateSlider(e.target.value);
 
 //GRID LINES
+
 const gridLineButton = document.querySelector(".gridLines");
 let gridlines = true;
 
@@ -17,7 +26,6 @@ gridLineButton.addEventListener("click", () => {
 
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
-const clearGridButton = document.querySelector(".clearGrid");
 let draw = false;
 
 //RAINBOW
@@ -83,36 +91,41 @@ function fillContainer(size) {
 		squareContainer.appendChild(square);
 	}
 }
+//NEW GRID SIZE SLIDER
+let clearGridSize;
+sizeSlider.onchange = (e) => (
+	(clearGridSize = e.target.value), updateGridSize(clearGridSize)
+);
+
+function updateGridSize(clearGridSize) {
+	squareContainer.innerHTML = "";
+	if (clearGridSize) {
+		turnEraserOff();
+		turnRainbowOff();
+		fillContainer(clearGridSize);
+	} else {
+		turnEraserOff();
+		turnRainbowOff();
+		fillContainer(defaultGridSize);
+	}
+}
+
+function updateSlider(value) {
+	sizeValue.innerHTML = `${value} x ${value}`;
+}
 
 //DRAWING EVENT LISTENERS
 window.addEventListener("mousedown", () => (draw = true));
 window.addEventListener("mouseup", () => (draw = false));
 
 //CLEAR GRID BUTTON
-clearGridButton.addEventListener("click", clearGrid);
+const clearGridButton = document.querySelector(".clearGrid");
 
-function clearGrid() {
+clearGridButton.addEventListener("click", () => {
 	if (window.confirm("Are you sure you want to clear the grid?")) {
-		squareContainer.innerHTML = "";
-		fillContainer(size);
-		turnEraserOff();
-		turnRainbowOff();
+		updateGridSize(clearGridSize);
 	} else {
 		return;
-	}
-}
-
-//ADJUST SIZE OF GRID
-
-sizeElement.addEventListener("keyup", () => {
-	if (sizeElement.value <= 64) {
-		size = sizeElement.value;
-		squareContainer.innerHTML = "";
-		fillContainer(size);
-		turnEraserOff();
-		turnRainbowOff();
-	} else {
-		alert("Please enter a number between 1 and 64.");
 	}
 });
 
@@ -157,5 +170,5 @@ function turnGridlinesOff() {
 	gridlines = false;
 	squareContainer.classList.remove("gridLines");
 }
-fillContainer(size);
+fillContainer(defaultGridSize);
 turnGridlinesOn();
