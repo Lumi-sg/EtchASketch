@@ -3,13 +3,24 @@ const squareContainer = document.querySelector(".squareContainer");
 const sizeElement = document.querySelector(".size");
 let size = sizeElement.value;
 
+//GRID LINES
+const gridLineButton = document.querySelector(".gridLines");
+let gridlines = true;
+
+gridLineButton.addEventListener("click", () => {
+	if (gridlines === true) {
+		turnGridlinesOff();
+	} else if (gridlines === false) {
+		turnGridlinesOn();
+	}
+});
+
 //GRID COLOR STUFF
 const color = document.querySelector(".Color");
 const clearGridButton = document.querySelector(".clearGrid");
 let draw = false;
 
 //RAINBOW
-
 const rainbowButton = document.querySelector(".rainbow");
 let rainbow = false;
 
@@ -31,6 +42,7 @@ eraserButton.addEventListener("click", () => {
 		turnEraserOff();
 	}
 });
+
 //POPULATE THE GRID
 function fillContainer(size) {
 	squareContainer.style.setProperty("--size", size);
@@ -129,4 +141,14 @@ function rainbowBrush(square) {
 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
+function turnGridlinesOn() {
+	gridlines = true;
+	squareContainer.classList.add("gridLines");
+}
+
+function turnGridlinesOff() {
+	gridlines = false;
+	squareContainer.classList.remove("gridLines");
+}
 fillContainer(size);
+turnGridlinesOn();
