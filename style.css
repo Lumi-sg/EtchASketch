@@ -7,7 +7,7 @@ body {
 }
 .title {
 	text-align: center;
-	font-size: 80px;
+	font-size: 60px;
 	color: white;
 }
 .footer {
@@ -20,7 +20,11 @@ body {
 	width: 100%;
 	padding: 10px;
 	font-size: 20px;
-	color: white;;
+	color: white;
+}
+
+a:link {
+	color: white;
 }
 
 .mainContainer {
@@ -33,10 +37,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
 	width: 175px;
-	height: 820px;
+	height:  670px;
 	background-color: #202020;
+	border-radius: 10px 0px 0px 10px;
 }
 
 .button {
@@ -54,9 +58,10 @@ body {
 
 .squareContainer {
 	--size: 4;
-	width: 800px;
-	height: 800px;
+	width: 720px;
+	height: 650px;
 	padding: 10px;
+	border-radius: 0px 10px 10px 0px;
 	align-self: center;
 	background-color: #202020;
 	display: grid;
