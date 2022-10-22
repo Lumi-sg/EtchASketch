@@ -65,7 +65,6 @@ eraserButton.addEventListener("click", () => {
 });
 
 //CLEAR GRID BUTTON
-
 clearGridButton.addEventListener("click", () => {
 	if (window.confirm("Are you sure you want to clear the grid?")) {
 		updateGridSize(clearGridSize);
@@ -84,38 +83,58 @@ function fillContainer(size) {
 		square.classList.add("square");
 
 		//SO YOU CAN DRAG THE MOUSE OVER TO DRAW
-		square.addEventListener("mouseover", () => {
-			if (!draw) {
-				return;
-			}
-			if (eraser) {
-				square.style.backgroundColor = "";
-			} else if (rainbow) {
-				rainbowBrush(square);
-			} else {
-				square.style.backgroundColor = color.value;
-			}
-		});
+		dragPaint(square);
 
 		//BACKGROUND COLOR
-		paintbucket.addEventListener("click", () => {
-			square.style.backgroundColor = color.value;
-		});
+		colorTheCanvas(square);
 
 		//CLICK > DRAG
-		square.addEventListener("mousedown", () => {
-			if (eraser) {
-				square.style.backgroundColor = "";
-			} else if (rainbow) {
-				rainbowBrush(square);
-			} else {
-				square.style.backgroundColor = color.value;
-			}
-		});
-		squareContainer.appendChild(square);
+		clickPaint(square);
 	}
 }
 
+function colorTheCanvas(square) {
+	paintbucket.addEventListener("click", () => {
+		square.style.backgroundColor = color.value;
+	});
+}
+
+function clickPaint(square) {
+	square.addEventListener("mousedown", () => {
+		if (eraser) {
+			square.style.backgroundColor = "";
+		} else if (rainbow) {
+			rainbowBrush(square);
+		} else {
+			square.style.backgroundColor = color.value;
+		}
+	});
+	squareContainer.appendChild(square);
+}
+
+function dragPaint(square) {
+	square.addEventListener("mouseover", () => {
+		if (!draw) {
+			return;
+		}
+		if (eraser) {
+			square.style.backgroundColor = "";
+		} else if (rainbow) {
+			rainbowBrush(square);
+		} else {
+			square.style.backgroundColor = color.value;
+		}
+	});
+}
+//RAINBOW
+function rainbowBrush(square) {
+	const randomRed = Math.floor(Math.random() * 256);
+	const randomGreen = Math.floor(Math.random() * 256);
+	const randomBlue = Math.floor(Math.random() * 256);
+	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+}
+
+//CHANGE GRID SIZE WITH SLIDER
 function updateGridSize(clearGridSize) {
 	squareContainer.innerHTML = "";
 	if (clearGridSize) {
@@ -128,7 +147,7 @@ function updateGridSize(clearGridSize) {
 		fillContainer(defaultGridSize);
 	}
 }
-
+//CHANGE SLIDER VALUE ON PAGE
 function updateSlider(value) {
 	sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
@@ -156,13 +175,6 @@ function turnRainbowOff() {
 	rainbow = false;
 	document.querySelector(".rainbow").style.color = "";
 	rainbowButton.classList.remove("rainbowButtonAnimation");
-}
-
-function rainbowBrush(square) {
-	const randomRed = Math.floor(Math.random() * 256);
-	const randomGreen = Math.floor(Math.random() * 256);
-	const randomBlue = Math.floor(Math.random() * 256);
-	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
 function turnGridlinesOn() {
