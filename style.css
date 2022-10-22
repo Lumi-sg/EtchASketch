@@ -164,7 +164,7 @@ a {
 	text-decoration: none;
 }
 
-a {
+/* a {
 	background: linear-gradient(to right, #181818, #181818),
 		linear-gradient(
 			to right,
@@ -185,7 +185,7 @@ a {
 
 a:hover {
 	background-size: 0 3px, 100% 3px;
-}
+} */
 
 .myslider {
 	-webkit-appearance: none;
@@ -214,4 +214,10 @@ a:hover {
 	height: 12px;
 	background: #ffffff;
 	cursor: pointer;
+}
+.fa {
+	transition: transform 0.3s ease-in-out;
+}
+.fa:hover {
+	transform: rotate(360deg) scale(1.2);
 }
