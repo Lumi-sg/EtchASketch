@@ -1,21 +1,37 @@
+const squareContainer = document.querySelector(".squareContainer");
+const sizeValue = document.getElementById("sizeValue");
+const sizeSlider = document.getElementById("sizeSlider");
+const gridLineButton = document.querySelector(".gridLines");
+const color = document.querySelector(".Color");
+const rainbowButton = document.querySelector(".rainbow");
+const eraserButton = document.querySelector(".eraser");
+const clearGridButton = document.querySelector(".clearGrid");
+const paintbucket = document.querySelector(".paintbucket");
+
 const defaultGridSize = 16;
 
-//GRID SIZE
-const squareContainer = document.querySelector(".squareContainer");
+//STATES
+let gridlines = true;
+let draw = false;
+let rainbow = false;
+let eraser = false;
+let clearGridSize;
 
-//NEW SIZE SLIDER
-const sizeValue = document.getElementById("sizeValue");
+//EVENT LISTENERS
 
-const sizeSlider = document.getElementById("sizeSlider");
+//DRAWING
+window.addEventListener("mousedown", () => (draw = true));
+window.addEventListener("mouseup", () => (draw = false));
 
 //UPDATE SLIDER ON PAGE
 sizeSlider.onmousemove = (e) => updateSlider(e.target.value);
 
+//NEW GRID SIZE SLIDER
+sizeSlider.onchange = (e) => (
+	(clearGridSize = e.target.value), updateGridSize(clearGridSize)
+);
+
 //GRID LINES
-
-const gridLineButton = document.querySelector(".gridLines");
-let gridlines = true;
-
 gridLineButton.addEventListener("click", () => {
 	if (gridlines === true) {
 		turnGridlinesOff();
@@ -24,20 +40,13 @@ gridLineButton.addEventListener("click", () => {
 	}
 });
 
-//GRID COLOR STUFF
-const color = document.querySelector(".Color");
-
+//COLOR
 color.addEventListener("click", () => {
-	console.log("you clicked the color button");
 	turnEraserOff();
 	turnRainbowOff();
 });
-let draw = false;
 
 //RAINBOW
-const rainbowButton = document.querySelector(".rainbow");
-let rainbow = false;
-
 rainbowButton.addEventListener("click", () => {
 	if (rainbow === false) {
 		turnRainbowOn();
@@ -45,10 +54,8 @@ rainbowButton.addEventListener("click", () => {
 		turnRainbowOff();
 	}
 });
-//ERASER STUFF
-const eraserButton = document.querySelector(".eraser");
-let eraser = false;
 
+//ERASER
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
 		turnEraserOn();
@@ -57,7 +64,19 @@ eraserButton.addEventListener("click", () => {
 	}
 });
 
-//POPULATE THE GRID
+//CLEAR GRID BUTTON
+
+clearGridButton.addEventListener("click", () => {
+	if (window.confirm("Are you sure you want to clear the grid?")) {
+		updateGridSize(clearGridSize);
+	} else {
+		return;
+	}
+});
+
+//FUNCTIONS
+
+//POPULATE THE GRID -MAIN FUNCTION-
 function fillContainer(size) {
 	squareContainer.style.setProperty("--size", size);
 	for (let i = 0; i < size * size; i++) {
@@ -79,12 +98,11 @@ function fillContainer(size) {
 		});
 
 		//BACKGROUND COLOR
-		const paintbucket = document.querySelector(".paintbucket");
 		paintbucket.addEventListener("click", () => {
 			square.style.backgroundColor = color.value;
 		});
 
-		//SO YOU CAN CLICK TO COLOR AND TO FILL THE CLICKED BOX WITH COLOR WHEN YOU CLICK > DRAG
+		//CLICK > DRAG
 		square.addEventListener("mousedown", () => {
 			if (eraser) {
 				square.style.backgroundColor = "";
@@ -97,11 +115,6 @@ function fillContainer(size) {
 		squareContainer.appendChild(square);
 	}
 }
-//NEW GRID SIZE SLIDER
-let clearGridSize;
-sizeSlider.onchange = (e) => (
-	(clearGridSize = e.target.value), updateGridSize(clearGridSize)
-);
 
 function updateGridSize(clearGridSize) {
 	squareContainer.innerHTML = "";
@@ -119,21 +132,6 @@ function updateGridSize(clearGridSize) {
 function updateSlider(value) {
 	sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
-
-//DRAWING EVENT LISTENERS
-window.addEventListener("mousedown", () => (draw = true));
-window.addEventListener("mouseup", () => (draw = false));
-
-//CLEAR GRID BUTTON
-const clearGridButton = document.querySelector(".clearGrid");
-
-clearGridButton.addEventListener("click", () => {
-	if (window.confirm("Are you sure you want to clear the grid?")) {
-		updateGridSize(clearGridSize);
-	} else {
-		return;
-	}
-});
 
 //HELPER FUNCTIONS
 
@@ -176,5 +174,7 @@ function turnGridlinesOff() {
 	gridlines = false;
 	squareContainer.classList.remove("gridLines");
 }
+
+//ON PAGE LOAD
 fillContainer(defaultGridSize);
 turnGridlinesOn();
