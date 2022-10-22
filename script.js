@@ -117,7 +117,7 @@ function updateGridSize(clearGridSize) {
 }
 
 function updateSlider(value) {
-	sizeValue.innerHTML = `${value} x ${value}`;
+	sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
 
 //DRAWING EVENT LISTENERS

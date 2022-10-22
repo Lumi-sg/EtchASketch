@@ -35,7 +35,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 175px;
+	width: 180px;
 	height: 670px;
 	background-color: #202020;
 	border-radius: 10px 0px 0px 10px;
@@ -52,13 +52,38 @@ body {
 	font-weight: bold;
 	width: 150px;
 	height: 25px;
+	background-color: #d1cfcf;
+}
+
+.button:hover {
+	background-color: rgb(255, 255, 255);
+}
+
+input[type="color"] {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: #202020;
+	border: #202020;
+	cursor: pointer;
+	height: 35px;
+	padding: 0;
+	width: 100px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+	border: 0;
+	border-radius: 5px;
 }
 
 .squareContainer {
 	--size: 4;
 	width: 650px;
 	height: 650px;
-	padding: 10px;
+	padding: 10px 10px 10px 0px;
 	border-radius: 0px 10px 10px 0px;
 	align-self: center;
 	background-color: #202020;
@@ -93,7 +118,8 @@ input[type="number"] {
 #optionlabels,
 #sizeValue {
 	color: white;
-	font-size: 18px;
+	font-size: 16px;
+	margin-top: 20px;
 }
 
 .size {
@@ -101,28 +127,30 @@ input[type="number"] {
 }
 
 .rainbow {
-	width: 150px;
-	height: 25px;
-	background-image: linear-gradient(
+	border-radius: 10px;
+}
+
+.rainbow.rainbowButtonAnimation {
+	animation: slidebg 3s linear infinite;
+	background: linear-gradient(
 		90deg,
-		violet,
-		indigo,
-		blue,
-		green,
-		yellow,
-		orange,
-		red,
-		violet
+		rgba(255, 0, 0, 1) 0%,
+		rgba(255, 154, 0, 1) 10%,
+		rgba(208, 222, 33, 1) 20%,
+		rgba(79, 220, 74, 1) 30%,
+		rgba(63, 218, 216, 1) 40%,
+		rgba(47, 201, 226, 1) 50%,
+		rgba(28, 127, 238, 1) 60%,
+		rgba(95, 21, 242, 1) 70%,
+		rgba(186, 12, 248, 1) 80%,
+		rgba(251, 7, 217, 1) 90%,
+		rgba(255, 0, 0, 1) 100%
 	);
 	border-radius: 10px;
 	font-size: 15;
 	color: white;
 	text-shadow: rgb(0, 0, 0) 2.5px 1px 1px;
 	-webkit-text-stroke: 0.3px black;
-}
-
-.rainbow.rainbowButtonAnimation {
-	animation: slidebg 2s linear infinite;
 }
 
 @keyframes slidebg {
@@ -157,4 +185,33 @@ a {
 
 a:hover {
 	background-size: 0 3px, 100% 3px;
+}
+
+.myslider {
+	-webkit-appearance: none;
+	appearance: none;
+	background: #3a3a3a;
+	outline: none;
+
+	border-radius: 10px;
+	height: 10px;
+	width: 125px;
+}
+
+.myslider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+.myslider::-moz-range-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	background: #ffffff;
+	cursor: pointer;
 }
