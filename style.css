@@ -75,7 +75,7 @@ input[type="color"] {
 
 ::-moz-color-swatch,
 ::-moz-focus-inner {
-	border: 0;
+	border: thin #3a3a3a solid;
 	border-radius: 5px;
 }
 
