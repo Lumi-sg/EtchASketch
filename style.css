@@ -33,11 +33,9 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border-radius: 4px;
-	padding: 30px;
-	margin: 50px;
+
 	width: 175px;
-	height: 700px;
+	height: 820px;
 	background-color: #202020;
 }
 
@@ -58,7 +56,6 @@ body {
 	--size: 4;
 	width: 800px;
 	height: 800px;
-	border-radius: 10px;
 	padding: 10px;
 	align-self: center;
 	background-color: #202020;
