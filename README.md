@@ -2,4 +2,4 @@
 
 [Live App](https://lumi-sg.github.io/EtchASketch/)
 
-![alt text](https://i.imgur.com/rJ8AKVI.png "Preview")
+<img src="https://i.imgur.com/rJ8AKVI.png " width="500" height="500">
