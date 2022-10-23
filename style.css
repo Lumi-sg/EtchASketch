@@ -55,10 +55,6 @@ body {
 	background-color: #d1cfcf;
 }
 
-.button:hover:not(.rainbowButtonAnimation) {
-	background-color: rgb(255, 255, 255);
-}
-
 input[type="color"] {
 	appearance: none;
 	-moz-appearance: none;
