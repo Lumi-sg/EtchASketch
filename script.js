@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 const squareContainer = document.querySelector(".squareContainer");
 const sizeValue = document.getElementById("sizeValue");
 const sizeSlider = document.getElementById("sizeSlider");
@@ -10,28 +11,28 @@ const paintbucket = document.querySelector(".paintbucket");
 
 const defaultGridSize = 16;
 
-//STATES
+// STATES
 let gridlines = true;
 let draw = false;
 let rainbow = false;
 let eraser = false;
 let clearGridSize;
 
-//EVENT LISTENERS
+// EVENT LISTENERS
 
-//DRAWING
+// DRAWING
 window.addEventListener("mousedown", () => (draw = true));
 window.addEventListener("mouseup", () => (draw = false));
 
-//UPDATE SLIDER ON PAGE
+// UPDATE SLIDER ON PAGE
 sizeSlider.onmousemove = (e) => updateSlider(e.target.value);
 
-//NEW GRID SIZE SLIDER
+// NEW GRID SIZE SLIDER
 sizeSlider.onchange = (e) => (
 	(clearGridSize = e.target.value), updateGridSize(clearGridSize)
 );
 
-//GRID LINES
+// GRID LINES
 gridLineButton.addEventListener("click", () => {
 	if (gridlines === true) {
 		turnGridlinesOff();
@@ -40,13 +41,13 @@ gridLineButton.addEventListener("click", () => {
 	}
 });
 
-//COLOR
+// COLOR
 color.addEventListener("click", () => {
 	turnEraserOff();
 	turnRainbowOff();
 });
 
-//RAINBOW
+// RAINBOW
 rainbowButton.addEventListener("click", () => {
 	if (rainbow === false) {
 		turnRainbowOn();
@@ -55,7 +56,7 @@ rainbowButton.addEventListener("click", () => {
 	}
 });
 
-//ERASER
+// ERASER
 eraserButton.addEventListener("click", () => {
 	if (eraser === false) {
 		turnEraserOn();
@@ -64,31 +65,29 @@ eraserButton.addEventListener("click", () => {
 	}
 });
 
-//CLEAR GRID BUTTON
+// CLEAR GRID BUTTON
 clearGridButton.addEventListener("click", () => {
 	if (window.confirm("Are you sure you want to clear the grid?")) {
 		updateGridSize(clearGridSize);
-	} else {
-		return;
 	}
 });
 
-//FUNCTIONS
+// FUNCTIONS
 
-//POPULATE THE GRID -MAIN FUNCTION-
+// POPULATE THE GRID -MAIN FUNCTION-
 function fillContainer(size) {
 	squareContainer.style.setProperty("--size", size);
 	for (let i = 0; i < size * size; i++) {
 		const square = document.createElement("div");
 		square.classList.add("square");
 
-		//SO YOU CAN DRAG THE MOUSE OVER TO DRAW
+		// SO YOU CAN DRAG THE MOUSE OVER TO DRAW
 		dragPaint(square);
 
-		//BACKGROUND COLOR
+		// BACKGROUND COLOR
 		colorTheCanvas(square);
 
-		//CLICK > DRAG
+		// CLICK > DRAG
 		clickPaint(square);
 	}
 }
@@ -126,7 +125,7 @@ function dragPaint(square) {
 		}
 	});
 }
-//RAINBOW
+// RAINBOW
 function rainbowBrush(square) {
 	const randomRed = Math.floor(Math.random() * 256);
 	const randomGreen = Math.floor(Math.random() * 256);
@@ -134,7 +133,7 @@ function rainbowBrush(square) {
 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
-//CHANGE GRID SIZE WITH SLIDER
+// CHANGE GRID SIZE WITH SLIDER
 function updateGridSize(clearGridSize) {
 	squareContainer.innerHTML = "";
 	if (clearGridSize) {
@@ -147,12 +146,12 @@ function updateGridSize(clearGridSize) {
 		fillContainer(defaultGridSize);
 	}
 }
-//CHANGE SLIDER VALUE ON PAGE
+// CHANGE SLIDER VALUE ON PAGE
 function updateSlider(value) {
 	sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
 
-//HELPER FUNCTIONS
+// HELPER FUNCTIONS
 
 function turnEraserOn() {
 	turnRainbowOff();
@@ -187,6 +186,6 @@ function turnGridlinesOff() {
 	squareContainer.classList.remove("gridLines");
 }
 
-//ON PAGE LOAD
+// ON PAGE LOAD
 fillContainer(defaultGridSize);
 turnGridlinesOn();
