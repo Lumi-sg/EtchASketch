@@ -133,7 +133,7 @@ function dragPaint(square) {
 // 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 // }
 
-// NEW FANCY NERDGE RAINBOW
+// NEW FANCY NERDGE RAINBOW (Not made by me)
 function lin2srgb(lin) {
 	if (lin > 0.0031308) {
 		s = 1.055 * Math.pow(lin, 1.0 / 2.4) - 0.055;
