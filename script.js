@@ -1,4 +1,3 @@
-/* eslint-disable no-sequences */
 const squareContainer = document.querySelector(".squareContainer");
 const sizeValue = document.getElementById("sizeValue");
 const sizeSlider = document.getElementById("sizeSlider");

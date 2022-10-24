@@ -150,7 +150,10 @@ input[type="number"] {
 }
 
 @keyframes slidebg {
-	to {
+	0% {
+		background-position: 0vw;
+	}
+	100% {
 		background-position: 20vw;
 	}
 }
