@@ -126,42 +126,42 @@ function dragPaint(square) {
 	});
 }
 // OLD RAINBOW
-// function rainbowBrush(square) {
-// 	const randomRed = Math.floor(Math.random() * 256);
-// 	const randomGreen = Math.floor(Math.random() * 256);
-// 	const randomBlue = Math.floor(Math.random() * 256);
-// 	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
-// }
+function rainbowBrush(square) {
+	const randomRed = Math.floor(Math.random() * 256);
+	const randomGreen = Math.floor(Math.random() * 256);
+	const randomBlue = Math.floor(Math.random() * 256);
+	square.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+}
 
 // NEW FANCY NERDGE RAINBOW (Not made by me)
-function lin2srgb(lin) {
-	if (lin > 0.0031308) {
-		s = 1.055 * Math.pow(lin, 1.0 / 2.4) - 0.055;
-	} else {
-		s = 12.92 * lin;
-	}
-	return s;
-}
+// function lin2srgb(lin) {
+// 	if (lin > 0.0031308) {
+// 		s = 1.055 * Math.pow(lin, 1.0 / 2.4) - 0.055;
+// 	} else {
+// 		s = 12.92 * lin;
+// 	}
+// 	return s;
+// }
 
-function srgb2lin(s) {
-	if (s <= 0.0404482362771082) {
-		lin = s / 12.92;
-	} else {
-		lin = Math.pow((s + 0.055) / 1.055, 2.4);
-	}
-	return lin;
-}
+// function srgb2lin(s) {
+// 	if (s <= 0.0404482362771082) {
+// 		lin = s / 12.92;
+// 	} else {
+// 		lin = Math.pow((s + 0.055) / 1.055, 2.4);
+// 	}
+// 	return lin;
+// }
 
-function random_sRGB_intensity() {
-	return lin2srgb(Math.random()) * 255;
-}
+// function random_sRGB_intensity() {
+// 	return lin2srgb(Math.random()) * 255;
+// }
 
-function rainbowBrush(square) {
-	const R = random_sRGB_intensity();
-	const G = random_sRGB_intensity();
-	const B = random_sRGB_intensity();
-	square.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
-}
+// function rainbowBrush(square) {
+// 	const R = random_sRGB_intensity();
+// 	const G = random_sRGB_intensity();
+// 	const B = random_sRGB_intensity();
+// 	square.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
+// }
 
 // CHANGE GRID SIZE WITH SLIDER
 function updateGridSize(clearGridSize) {
